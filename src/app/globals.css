@@ -1,2 +1,61 @@
 @import "tailwindcss";
 
+
+
+
+/* ok so the color theme will be am using is only black and white and some gray too lets just make the variables for that  */
+
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --popover: #ffffff;
+  --popover-foreground: #09090b;
+  --card: #ffffff;
+  --card-foreground: #09090b;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --ring: #18181b;
+  --chart-1: #18181b;
+  --chart-2: #71717a;
+  --chart-3: #a1a1aa;
+  --chart-4: #d4d4d8;
+  --chart-5: #e4e4e7;
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-ring: var(--ring);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
