@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const NAV_LINKS = [
@@ -12,6 +12,32 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // Check saved preference or system theme preference
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      document.documentElement.classList.add('dark');
+      setIsDark(true);
+    } else {
+      document.documentElement.classList.remove('dark');
+      setIsDark(false);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setIsDark(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setIsDark(true);
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-[var(--background)] text-[var(--foreground)] border-b border-[var(--border)] transition-colors duration-200">
@@ -24,8 +50,8 @@ export default function Navbar() {
           Logo
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-2 text-sm font-medium">
+        {/* Desktop Links & Theme Toggle */}
+        <div className="hidden md:flex items-center gap-3 text-sm font-medium">
           {NAV_LINKS.map((link) => (
             <Link 
               key={link.href} 
@@ -35,19 +61,38 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-[var(--radius)] text-[var(--foreground)] hover:bg-[var(--accent)] border border-[var(--border)] transition-colors"
+            aria-label="Toggle dark mode"
+          >
+            {isDark ? '🌙' : '☀️'}
+          </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 rounded-[var(--radius)] text-[var(--foreground)] hover:bg-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)] transition-colors"
-          aria-label="Toggle navigation menu"
-        >
-          {isOpen ? '✕' : '☰'}
-        </button>
+        {/* Mobile Actions (Toggle + Menu Button) */}
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-[var(--radius)] text-[var(--foreground)] hover:bg-[var(--accent)] border border-[var(--border)] transition-colors"
+            aria-label="Toggle dark mode"
+          >
+            {isDark ? '🌙' : '☀️'}
+          </button>
+          
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 rounded-[var(--radius)] text-[var(--foreground)] hover:bg-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)] transition-colors"
+            aria-label="Toggle navigation menu"
+          >
+            {isOpen ? '✕' : '☰'}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Links */}
+      {/* Mobile Links Drawer */}
       {isOpen && (
         <div className="md:hidden border-t border-[var(--border)] bg-[var(--popover)] text-[var(--popover-foreground)] px-4 py-3 flex flex-col gap-2 text-sm font-medium">
           {NAV_LINKS.map((link) => (
