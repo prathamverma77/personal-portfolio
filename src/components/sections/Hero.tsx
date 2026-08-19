@@ -3,7 +3,7 @@ import { FiGithub, FiLinkedin, FiMail, FiArrowUpRight } from 'react-icons/fi';
 
 const Hero = () => {
     return (
-        <section className="w-full min-h-[85vh] lg:min-h-[calc(100vh-4rem)] flex items-center justify-center relative bg-[var(--background)] text-[var(--foreground)] overflow-hidden py-12 lg:py-0">
+        <section className="w-full min-h-[85vh] lg:min-h-[calc(100vh-4rem)] flex items-center justify-center relative bg-transparent text-[var(--foreground)] overflow-hidden py-12 lg:py-0">
             {/* Background Depth Layers */}
             {/* 1. Faint Grid Pattern Layer with Radial Mask */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_50%,transparent_100%)] pointer-events-none" />
@@ -27,9 +27,9 @@ const Hero = () => {
 
                     <p className="text-base md:text-lg text-[var(--muted-foreground)] mb-8 leading-relaxed max-w-xl">
                         I build <span className="text-[var(--brand-accent)] font-medium">production-ready</span> web applications,
-from modern Next.js frontends to scalable
-REST APIs and backend services using
-Node.js and FastAPI.
+                        from modern Next.js frontends to scalable
+                        REST APIs and backend services using
+                        Node.js and FastAPI.
                     </p>
 
                     <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">

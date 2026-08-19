@@ -5,31 +5,22 @@ const AboutMe = () => {
     <section className="w-full py-16 md:py-24 bg-[var(--background)] text-[var(--foreground)] border-t border-[var(--border)]">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Column: Intro Text */}
-        <div className="flex flex-col items-start text-left">
-          <span className="text-sm font-semibold tracking-wider uppercase text-[var(--muted-foreground)] mb-2">
-            Get to Know Me
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-[var(--foreground)]">
+        <div className="flex flex-col items-start text-left space-y-4">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-2 text-[var(--foreground)]">
             About Me
           </h2>
-          <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed mb-4">
-            I am a passionate Software Engineer dedicated to crafting robust, high-performance web applications. With a strong foundation in full-stack development, I enjoy bridging design and technical implementation to create seamless user experiences.
-          </p>
-          <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed mb-8">
-            When I'm not writing code, I love exploring emerging web technologies, optimizing system architectures, and continuously refining my skill set to build impactful software.
+
+          <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            I'm a <span className="text-[var(--foreground)] font-semibold">Full Stack Developer</span> who enjoys building complete web applications—not just the UI, but the APIs, database logic, authentication, file handling, and deployment behind them.
           </p>
 
-          {/* Key Skill Badges */}
-          <div className="flex flex-wrap gap-2">
-            {['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind CSS'].map((tech) => (
-              <span
-                key={tech}
-                className="px-3.5 py-1.5 text-xs font-medium rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)]"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+          <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            I've worked with <span className="text-[var(--foreground)] font-medium">Next.js, React, TypeScript, Node.js, Express,</span> and <span className="text-[var(--foreground)] font-medium">Python/FastAPI</span>, building applications backed by <span className="text-[var(--foreground)] font-medium">MongoDB</span> and <span className="text-[var(--foreground)] font-medium">MySQL</span> and integrating services such as <span className="text-[var(--foreground)] font-medium">Cloudflare R2</span> and third-party APIs.
+          </p>
+
+          <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
+            I'm currently focused on becoming a stronger <span className="text-[var(--brand-accent)] font-semibold">backend-oriented engineer</span>—improving my API design, database architecture, system design, and problem-solving skills while continuing to build production applications.
+          </p>
         </div>
 
         {/* Right Column: Visual Developer Workspace Code Panel */}

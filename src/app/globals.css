@@ -84,3 +84,57 @@ body {
   background-color: var(--background);
   color: var(--foreground);
 }
+
+/* Fixed Ambient Background Glow (ChaiCode Inspired) */
+.ambient-glow-fixed {
+  position: fixed;
+  top: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1200px;
+  height: 750px;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 9999px;
+  filter: blur(100px);
+  background: radial-gradient(
+    circle at center,
+    rgba(99, 102, 241, 0.22) 0%,
+    rgba(99, 102, 241, 0.06) 45%,
+    transparent 70%
+  );
+}
+
+.dark .ambient-glow-fixed {
+  background: radial-gradient(
+    circle at center,
+    rgba(129, 140, 248, 0.35) 0%,
+    rgba(99, 102, 241, 0.12) 45%,
+    transparent 70%
+  );
+}
+
+.ambient-glow-warm {
+  position: fixed;
+  top: -120px;
+  right: -100px;
+  width: 750px;
+  height: 650px;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 9999px;
+  filter: blur(100px);
+  background: radial-gradient(
+    circle at center,
+    rgba(249, 115, 22, 0.15) 0%,
+    transparent 65%
+  );
+}
+
+.dark .ambient-glow-warm {
+  background: radial-gradient(
+    circle at center,
+    rgba(249, 115, 22, 0.22) 0%,
+    transparent 65%
+  );
+}
