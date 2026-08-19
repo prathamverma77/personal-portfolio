@@ -32,38 +32,87 @@ const AboutMe = () => {
           </div>
         </div>
 
-        {/* Right Column: Illustration Image Container */}
+        {/* Right Column: Visual Developer Workspace Code Panel */}
         <div className="flex justify-center items-center">
-          <div className="relative w-full max-w-md aspect-square rounded-[var(--radius)] bg-[var(--accent)] border border-[var(--border)] flex items-center justify-center p-8 shadow-sm overflow-hidden group">
-            {/* <img
-              src="/images/about-illustration.png"
-              alt="About Me Illustration"
-              className="w-full h-full object-contain relative z-10"
-              onError={(e) => {
-                // Hide image fallback element if file doesn't exist yet
-                const target = e.target as HTMLElement;
-                target.style.display = 'none';
-              }}
-            /> */}
+          <div className="w-full max-w-lg rounded-[var(--radius)] bg-[var(--card)] border border-[var(--border)] shadow-xl overflow-hidden font-mono text-sm group hover:border-[var(--brand-accent)]/40 transition-all duration-500 relative">
+            {/* Subtle Ambient Glow */}
+            <div className="absolute -inset-1 bg-[radial-gradient(circle_at_top_right,var(--brand-accent)/0.12_0%,transparent_60%)] pointer-events-none" />
 
-            {/* Graphic Vector Placeholder */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-              <svg
-                className="w-32 h-32 text-[var(--muted-foreground)] mb-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
-                />
-              </svg>
-              <span className="text-xs text-[var(--muted-foreground)] font-mono">
-                /images/about-illustration.png
-              </span>
+            {/* IDE Window Titlebar */}
+            <div className="flex items-center justify-between px-4 py-3 bg-[var(--accent)]/50 border-b border-[var(--border)] text-xs">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
+                <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
+                <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
+              </div>
+              <div className="flex items-center gap-2 px-3 py-1 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] font-medium text-xs shadow-xs">
+                <span className="text-sky-500 font-bold">TS</span> pratham.ts
+              </div>
+              <div className="flex items-center gap-1.5 text-[11px] text-[var(--muted-foreground)] font-sans">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                UTF-8
+              </div>
+            </div>
+
+            {/* Code Panel Body with Line Numbers */}
+            <div className="p-4 sm:p-6 overflow-x-auto leading-relaxed text-xs sm:text-sm">
+              <div className="flex gap-4">
+                {/* Line Numbers */}
+                <div className="select-none text-[var(--muted-foreground)]/40 text-right space-y-1 font-mono text-xs">
+                  <div>1</div>
+                  <div>2</div>
+                  <div>3</div>
+                  <div>4</div>
+                  <div>5</div>
+                  <div>6</div>
+                  <div>7</div>
+                  <div>8</div>
+                  <div>9</div>
+                </div>
+
+                {/* Syntax Highlighted Code Content */}
+                <div className="space-y-1 font-mono">
+                  <div>
+                    <span className="text-[var(--brand-accent)] font-semibold">const</span>{" "}
+                    <span className="text-[var(--foreground)] font-semibold">developer</span>{" "}
+                    <span className="text-[var(--muted-foreground)]">=</span>{" "}
+                    <span className="text-amber-500">&#123;</span>
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-[var(--foreground)]/80">role:</span>{" "}
+                    <span className="text-emerald-600 dark:text-emerald-400">"Full Stack Developer"</span>,
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-[var(--foreground)]/80">frontend:</span>{" "}
+                    <span className="text-sky-600 dark:text-sky-400">[</span>
+                    <span className="text-emerald-600 dark:text-emerald-400">"Next.js"</span>,{" "}
+                    <span className="text-emerald-600 dark:text-emerald-400">"TypeScript"</span>
+                    <span className="text-sky-600 dark:text-sky-400">]</span>,
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-[var(--foreground)]/80">backend:</span>{" "}
+                    <span className="text-sky-600 dark:text-sky-400">[</span>
+                    <span className="text-emerald-600 dark:text-emerald-400">"Node.js"</span>,{" "}
+                    <span className="text-emerald-600 dark:text-emerald-400">"FastAPI"</span>
+                    <span className="text-sky-600 dark:text-sky-400">]</span>,
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-[var(--foreground)]/80">database:</span>{" "}
+                    <span className="text-sky-600 dark:text-sky-400">[</span>
+                    <span className="text-emerald-600 dark:text-emerald-400">"MongoDB"</span>,{" "}
+                    <span className="text-emerald-600 dark:text-emerald-400">"SQL"</span>
+                    <span className="text-sky-600 dark:text-sky-400">]</span>,
+                  </div>
+                  <div className="pl-4">
+                    <span className="text-[var(--foreground)]/80">focus:</span>{" "}
+                    <span className="text-emerald-600 dark:text-emerald-400">"Backend Engineering"</span>
+                  </div>
+                  <div>
+                    <span className="text-amber-500">&#125;</span>;
+                    <span className="inline-block w-2 h-4 ml-1.5 bg-[var(--brand-accent)] animate-pulse align-middle" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

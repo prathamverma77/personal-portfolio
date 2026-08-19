@@ -21,12 +21,15 @@ const Hero = () => {
                         Pratham Verma
                     </h1>
 
-                    <h2 className="text-xl md:text-2xl font-semibold text-[var(--muted-foreground)] mb-6">
+                    <h2 className="text-xl md:text-2xl font-semibold text-[var(--brand-accent)] mb-6 tracking-wide">
                         Full Stack Developer
                     </h2>
 
                     <p className="text-base md:text-lg text-[var(--muted-foreground)] mb-8 leading-relaxed max-w-xl">
-                        I build scalable, performant web applications using Next.js, TypeScript &amp; FastAPI.
+                        I build <span className="text-[var(--brand-accent)] font-medium">production-ready</span> web applications,
+from modern Next.js frontends to scalable
+REST APIs and backend services using
+Node.js and FastAPI.
                     </p>
 
                     <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
@@ -40,7 +43,7 @@ const Hero = () => {
                             href="/resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-[var(--background)] text-[var(--foreground)] font-medium px-6 py-3 rounded-[var(--radius)] text-base border border-[var(--border)] hover:bg-[var(--accent)] transition-all inline-flex items-center gap-2"
+                            className="bg-[var(--background)] text-[var(--foreground)] font-medium px-6 py-3 rounded-[var(--radius)] text-base border border-[var(--border)] hover:bg-[var(--accent)] hover:border-[var(--brand-accent)]/40 hover:text-[var(--brand-accent)] transition-all inline-flex items-center gap-2"
                         >
                             Resume <FiArrowUpRight className="text-lg" />
                         </a>
@@ -48,24 +51,24 @@ const Hero = () => {
 
                     <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 text-sm font-medium">
                         <a
-                            href="https://github.com"
+                            href="https://github.com/prathamverma77"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--background)]/60 hover:bg-[var(--accent)] hover:border-[var(--primary)]/50 text-[var(--foreground)] transition-all shadow-sm"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--background)]/60 hover:bg-[var(--accent)] hover:border-[var(--brand-accent)]/40 hover:text-[var(--brand-accent)] text-[var(--foreground)] transition-all shadow-sm"
                         >
                             <FiGithub className="text-base" /> GitHub
                         </a>
                         <a
-                            href="https://linkedin.com"
+                            href="https://www.linkedin.com/in/prathamverma77/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--background)]/60 hover:bg-[var(--accent)] hover:border-[var(--primary)]/50 text-[var(--foreground)] transition-all shadow-sm"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--background)]/60 hover:bg-[var(--accent)] hover:border-[var(--brand-accent)]/40 hover:text-[var(--brand-accent)] text-[var(--foreground)] transition-all shadow-sm"
                         >
                             <FiLinkedin className="text-base text-sky-500" /> LinkedIn
                         </a>
                         <a
-                            href="mailto:contact@example.com"
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--background)]/60 hover:bg-[var(--accent)] hover:border-[var(--primary)]/50 text-[var(--foreground)] transition-all shadow-sm"
+                            href="mailto:prathamverma1980@gmail.com"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--background)]/60 hover:bg-[var(--accent)] hover:border-[var(--brand-accent)]/40 hover:text-[var(--brand-accent)] text-[var(--foreground)] transition-all shadow-sm"
                         >
                             <FiMail className="text-base text-rose-500" /> Email
                         </a>
@@ -73,15 +76,19 @@ const Hero = () => {
                 </div>
 
                 <div className="relative w-full max-w-md flex justify-center">
-                    {/* 3. Subtle Radial Glow directly behind the photo frame */}
-                    <div className="absolute -inset-6 rounded-full bg-[radial-gradient(circle_at_center,var(--primary)/0.25_0%,transparent_70%)] blur-2xl pointer-events-none" />
+                    {/* Soft Radial Ambient Glow Layers */}
+                    <div className="absolute -inset-10 sm:-inset-16 rounded-full bg-[radial-gradient(circle_at_center,var(--brand-accent)/0.15_0%,transparent_70%)] blur-3xl pointer-events-none" />
+                    <div className="absolute -inset-4 sm:-inset-8 rounded-full bg-[radial-gradient(circle_at_center,var(--brand-accent)/0.25_0%,transparent_60%)] blur-2xl pointer-events-none" />
 
-                    <div className="relative border border-[var(--border)] bg-[var(--background)]/80 backdrop-blur-sm rounded-full p-3 shadow-2xl w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96">
+                    {/* Profile Image Container: Thin Ring, Upper Body Crop, Seamless Hover Blend */}
+                    <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-[380px] md:h-[380px] rounded-full overflow-hidden ring-1 ring-[var(--brand-accent)]/20 shadow-xl transition-all duration-700 ease-out hover:scale-[1.02] hover:ring-[var(--brand-accent)]/40 group">
                         <img
                             src="/portfolio%20pic.jpeg"
                             alt="Pratham Verma"
-                            className="w-full h-full object-cover object-top rounded-full"
+                            className="w-full h-full object-cover object-[center_55%] scale-135 transition-transform duration-700 ease-out group-hover:scale-140"
                         />
+                        {/* Subtle inner edge gradient for smooth blending */}
+                        <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-[var(--foreground)]/10 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_65%,var(--background)/0.25_100%)]" />
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ const Footer = () => {
             GitHub
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/prathamverma77/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[var(--foreground)] transition-colors"

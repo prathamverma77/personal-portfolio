@@ -46,8 +46,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="text-xs font-semibold text-[var(--muted-foreground)] uppercase">Email</h4>
-                  <a href="mailto:your.email@example.com" className="text-sm font-medium text-[var(--foreground)] hover:underline">
-                    your.email@example.com
+                  <a href="mailto:prathamverma1980@gmail.com" className="text-sm font-medium text-[var(--foreground)] hover:underline">
+                    prathamverma1980@gmail.com
                   </a>
                 </div>
               </div>
@@ -70,13 +70,17 @@ const Contact = () => {
               <h4 className="text-xs font-semibold text-[var(--muted-foreground)] uppercase mb-3">Follow & Connect</h4>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="#"
+                  href="https://github.com/prathamverma77"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 text-xs font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--background)] transition-colors"
                 >
                   GitHub
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/prathamverma77/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 text-xs font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--background)] transition-colors"
                 >
                   LinkedIn
