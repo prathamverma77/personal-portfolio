@@ -29,11 +29,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col relative bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--brand-accent)]/20 selection:text-[var(--brand-accent)]">
-        {/* Fixed Ambient Background Glow Layers (ChaiCode Style) */}
-        <div className="ambient-glow-fixed" />
-        <div className="ambient-glow-warm" />
-
+      <body className="min-h-full flex flex-col relative bg-[var(--background)] text-[var(--foreground)] selection:bg-[var(--foreground)] selection:text-[var(--background)]">
         <div className="relative z-10 flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow">

@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 const NAV_LINKS = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Services', href: '/services' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: '#hero' },
+  { label: 'About', href: '#about' },
+  { label: 'Tech Stack', href: '#stack' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
 ] as const;
 
 export default function Navbar() {
@@ -44,22 +46,22 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <Link 
-          href="/" 
-          className="font-bold text-lg text-[var(--foreground)] hover:text-[var(--muted-foreground)] transition-colors"
+          href="#hero" 
+          className="font-extrabold text-xl tracking-tight text-[var(--foreground)] hover:text-[var(--brand-accent)] transition-colors flex items-center gap-1"
         >
-          Logo
+          Pratham<span className="text-[var(--brand-accent)]">.</span>
         </Link>
 
         {/* Desktop Links & Theme Toggle */}
-        <div className="hidden md:flex items-center gap-3 text-sm font-medium">
+        <div className="hidden md:flex items-center gap-1.5 text-sm font-medium">
           {NAV_LINKS.map((link) => (
-            <Link 
+            <a 
               key={link.href} 
               href={link.href} 
               className="px-3 py-2 rounded-[var(--radius)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
 
           {/* Theme Toggle Button */}
@@ -96,14 +98,14 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden border-t border-[var(--border)] bg-[var(--popover)] text-[var(--popover-foreground)] px-4 py-3 flex flex-col gap-2 text-sm font-medium">
           {NAV_LINKS.map((link) => (
-            <Link 
+            <a 
               key={link.href} 
               href={link.href} 
               onClick={() => setIsOpen(false)}
               className="px-3 py-2 rounded-[var(--radius)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
         </div>
       )}
