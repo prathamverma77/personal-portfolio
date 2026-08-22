@@ -1,15 +1,6 @@
 import React from 'react';
 
-/**
- * AboutMe Section Component
- * 
- * Displays developer background overview broken into 3 focused sections:
- * 1. Who you are (Full Stack Developer role definition)
- * 2. Technologies & Stack worked with
- * 3. Current engineering trajectory & Backend focus
- * 
- * Accompanied by a visual, interactive IDE code workspace panel (`pratham.ts`).
- */
+
 const AboutMe = () => {
   return (
     <section id="about" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50">
