@@ -44,7 +44,7 @@ const Contact = () => {
 
       if (res.ok && data.success) {
         setSubmitted(true);
-        setCooldown(5); // 5 seconds timer
+        setCooldown(3); // 3 seconds timer
       } else {
         setError(data.message || 'Failed to send message. Please try again.');
       }

@@ -14,7 +14,7 @@ export default function Home() {
       <MyStack />
       <ExpTimeline />
       <Projects />
-      <GithubStats />
+      {/* <GithubStats /> */}
       <Contact />
     </main>
   );

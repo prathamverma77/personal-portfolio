@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useHireMeModal } from '@/context/HireMeModalContext';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#hero' },
@@ -9,12 +10,12 @@ const NAV_LINKS = [
   { label: 'Tech Stack', href: '#stack' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
 ] as const;
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const { openModal } = useHireMeModal();
 
   useEffect(() => {
     // Check saved preference or system theme preference
@@ -52,17 +53,45 @@ export default function Navbar() {
           Pratham<span className="text-[var(--brand-accent)]">.</span>
         </Link>
 
-        {/* Desktop Links & Theme Toggle */}
-        <div className="hidden md:flex items-center gap-1.5 text-sm font-medium">
+        {/* Desktop Links, Theme Toggle & Hire Me CTA */}
+        <div className="hidden md:flex items-center gap-2 text-sm font-medium">
           {NAV_LINKS.map((link) => (
             <a 
               key={link.href} 
               href={link.href} 
-              className="px-3 py-2 rounded-[var(--radius)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors"
+              className="px-3 py-2 rounded-[var(--radius)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors text-xs font-semibold"
             >
               {link.label}
             </a>
           ))}
+
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-[var(--radius)] text-[var(--foreground)] hover:bg-[var(--accent)] border border-[var(--border)] transition-colors cursor-pointer"
+            aria-label="Toggle dark mode"
+          >
+            {isDark ? '🌙' : '☀️'}
+          </button>
+
+          {/* Desktop Hire Me CTA */}
+          <button
+            onClick={openModal}
+            className="ml-2 px-4 py-2 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] text-xs font-bold hover:opacity-90 transition-all shadow-xs cursor-pointer"
+          >
+            Hire Me
+          </button>
+        </div>
+
+        {/* Mobile Actions (Hire Me + Theme Toggle + Hamburger Menu Button) */}
+        <div className="flex items-center gap-2 md:hidden">
+          {/* Hire Me CTA outside Hamburger menu */}
+          <button
+            onClick={openModal}
+            className="px-3.5 py-1.5 rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] text-xs font-bold hover:opacity-90 transition-all shadow-xs cursor-pointer"
+          >
+            Hire Me
+          </button>
 
           {/* Theme Toggle Button */}
           <button
@@ -72,18 +101,8 @@ export default function Navbar() {
           >
             {isDark ? '🌙' : '☀️'}
           </button>
-        </div>
 
-        {/* Mobile Actions (Toggle + Menu Button) */}
-        <div className="flex items-center gap-2 md:hidden">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-[var(--radius)] text-[var(--foreground)] hover:bg-[var(--accent)] border border-[var(--border)] transition-colors"
-            aria-label="Toggle dark mode"
-          >
-            {isDark ? '🌙' : '☀️'}
-          </button>
-          
+          {/* Hamburger Menu Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="p-2 rounded-[var(--radius)] text-[var(--foreground)] hover:bg-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--ring)] transition-colors"

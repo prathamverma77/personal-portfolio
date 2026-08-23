@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import { FiGithub, FiLinkedin, FiMail, FiArrowUpRight, FiTwitter } from 'react-icons/fi';
+import { useHireMeModal } from '@/context/HireMeModalContext';
 
 /**
  * Hero Section Component
@@ -9,6 +12,8 @@ import { FiGithub, FiLinkedin, FiMail, FiArrowUpRight, FiTwitter } from 'react-i
  * container with radial ambient glow effects.
  */
 const Hero = () => {
+    const { openModal } = useHireMeModal();
+
     return (
         <section id="hero" className="w-full min-h-[85vh] lg:min-h-[calc(100vh-4rem)] flex items-center justify-center relative bg-transparent text-[var(--foreground)] overflow-hidden py-12 lg:py-0">
             {/* Ambient Background Depth Layers */}
@@ -47,13 +52,13 @@ const Hero = () => {
 
                     {/* Call to Action (CTA) Buttons */}
                     <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
-                        {/* View Projects Link */}
-                        <a
-                            href="#projects"
-                            className="bg-[var(--primary)] text-[var(--primary-foreground)] font-medium px-6 py-3 rounded-[var(--radius)] text-base hover:opacity-90 transition-all shadow-sm inline-flex items-center gap-2"
+                        {/* Hire Me CTA Button */}
+                        <button
+                            onClick={openModal}
+                            className="bg-[var(--primary)] text-[var(--primary-foreground)] font-bold px-6 py-3 rounded-[var(--radius)] text-base hover:opacity-90 transition-all shadow-md inline-flex items-center gap-2 cursor-pointer"
                         >
-                            View My Work
-                        </a>
+                            Hire Me
+                        </button>
                         {/* Resume Download Link */}
                         <a
                             href="/resume.pdf"
