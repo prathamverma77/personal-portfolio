@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -11,9 +11,25 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [cooldown, setCooldown] = useState(0);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (cooldown > 0) {
+      timer = setTimeout(() => {
+        setCooldown((prev) => prev - 1);
+      }, 1000);
+    } else if (cooldown === 0 && submitted) {
+      setSubmitted(false);
+      setFormData({ name: '', email: '', message: '' });
+    }
+    return () => clearTimeout(timer);
+  }, [cooldown, submitted]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (loading || cooldown > 0) return;
+
     setLoading(true);
     setError(null);
 
@@ -28,7 +44,7 @@ const Contact = () => {
 
       if (res.ok && data.success) {
         setSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
+        setCooldown(5); // 5 seconds timer
       } else {
         setError(data.message || 'Failed to send message. Please try again.');
       }
@@ -121,15 +137,30 @@ const Contact = () => {
           {/* Right Column: Contact Form */}
           <div className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 shadow-sm">
             {submitted ? (
-              <div className="py-12 text-center space-y-3">
+              <div className="py-12 text-center space-y-4">
                 <div className="text-4xl">✅</div>
-                <h3 className="text-xl font-bold text-[var(--foreground)]">Message Sent!</h3>
-                <p className="text-sm text-[var(--muted-foreground)]">
-                  Thank you for reaching out. I will get back to you as soon as possible.
+                <h3 className="text-xl font-bold text-[var(--foreground)]">Message Sent Successfully!</h3>
+                <p className="text-sm text-[var(--muted-foreground)] max-w-sm mx-auto leading-relaxed">
+                  Thank you for reaching out. Your inquiry has been delivered directly to my dashboard inbox.
                 </p>
+
+                {/* Countdown Timer Badge */}
+                <div className="pt-4 flex items-center justify-center">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--accent)] border border-[var(--border)] text-xs font-mono text-[var(--foreground)]">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    Form resets in <span className="font-bold text-sky-500">{cooldown}s</span>
+                  </div>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Error Banner */}
+                {error && (
+                  <div className="p-3 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-500 text-xs font-semibold">
+                    {error}
+                  </div>
+                )}
+
                 <div>
                   <label htmlFor="name" className="block text-xs font-semibold text-[var(--muted-foreground)] uppercase mb-2">
                     Name
@@ -177,9 +208,20 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full py-3 px-6 rounded-[var(--radius)] bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-sm hover:opacity-90 transition-all shadow-sm"
+                  disabled={loading || cooldown > 0}
+                  className="w-full py-3 px-6 rounded-[var(--radius)] bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-sm hover:opacity-90 active:scale-[0.99] transition-all disabled:opacity-50 shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  Send Message
+                  {loading ? (
+                    <>
+                      <svg className="animate-spin h-4 w-4 text-current" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      Sending Message...
+                    </>
+                  ) : (
+                    'Send Message'
+                  )}
                 </button>
               </form>
             )}
