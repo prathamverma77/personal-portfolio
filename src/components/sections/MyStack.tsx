@@ -110,9 +110,24 @@ const TechIcons: Record<string, React.JSX.Element> = {
       <path d="M12 2L2 7.5v9L12 22l10-5.5v-9L12 2zm0 3.5l7 3.8v7.4l-7 3.8-7-3.8V9.3l7-3.8z" />
     </svg>
   ),
-  'Cloudflare R2': (
+  Redux: (
     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
+      <path d="M12 2A10 10 0 1022 12 10 10 0 0012 2zm0 3a7 7 0 110 14 7 7 0 010-14zm0 3a4 4 0 100 8 4 4 0 000-8z" />
+    </svg>
+  ),
+  SQL: (
+    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 3C7 3 3 5.7 3 9v6c0 3.3 4 6 9 6s9-2.7 9-6V9c0-3.3-4-6-9-6zm0 3.5c3.6 0 6.5 1.6 6.5 3.5S15.6 13.5 12 13.5 5.5 11.9 5.5 10 8.4 6.5 12 6.5z" />
+    </svg>
+  ),
+  npm: (
+    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M1 7v10h22V7H1zm18 8h-3V9h3v6zm-5 0h-3V9h3v6zm-5 0H6V9h3v6z" />
+    </svg>
+  ),
+  'VS Code': (
+    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.5 2.5l-9.3 8.7L3.5 7.5 1 9v6l2.5 1.5 4.7-3.7 9.3 8.7L23 19.5v-15l-5.5-2z" />
     </svg>
   ),
 };
@@ -120,23 +135,23 @@ const TechIcons: Record<string, React.JSX.Element> = {
 const STACK_CATEGORIES = [
   {
     category: 'Frontend',
-    description: 'Interfaces and applications with React, Next.js and TypeScript.',
-    skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
+    description: 'Modern user interfaces and web applications built with Next.js, React, and TypeScript.',
+    skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'Redux', 'HTML5', 'CSS3'],
   },
   {
     category: 'Backend',
-    description: 'REST APIs, server-side logic and authentication with Node.js and FastAPI.',
+    description: 'Scalable REST APIs, backend logic, and microservices with Node.js, Express, and FastAPI.',
     skills: ['Node.js', 'Express.js', 'FastAPI', 'Python', 'REST APIs', 'JWT'],
   },
   {
-    category: 'Database',
-    description: 'Persistent data storage, schema design, and relational / document databases.',
-    skills: ['MongoDB', 'MySQL', 'Mongoose'],
+    category: 'Database & Storage',
+    description: 'Relational & document database systems, schema design, and cloud object storage.',
+    skills: ['MongoDB', 'MySQL', 'SQL', 'Mongoose', 'Cloudflare R2'],
   },
   {
-    category: 'Tools & Infrastructure',
-    description: 'Workflow optimization, version control, API testing, and cloud deployment.',
-    skills: ['Git', 'GitHub', 'Postman', 'Vercel', 'Render', 'Cloudflare R2'],
+    category: 'Tools & DevOps',
+    description: 'Version control workflows, API development, cloud hosting, and package managers.',
+    skills: ['Git', 'GitHub', 'Postman', 'Vercel', 'Render', 'VS Code', 'npm'],
   },
 ];
 

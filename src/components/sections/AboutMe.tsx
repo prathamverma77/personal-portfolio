@@ -36,22 +36,22 @@ const AboutMe = () => {
             <div className="flex items-center justify-between px-4 py-3 bg-[var(--accent)]/50 border-b border-[var(--border)] text-xs">
               {/* Window Action Dots */}
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-zinc-400/60 dark:bg-zinc-600/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-zinc-400/60 dark:bg-zinc-600/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-zinc-400/60 dark:bg-zinc-600/80 inline-block" />
+                <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
+                <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
+                <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
               </div>
               {/* Active Tab Badge */}
               <div className="flex items-center gap-2 px-3 py-1 rounded bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] font-medium text-xs shadow-xs">
-                <span className="text-[var(--foreground)] font-bold">TS</span> pratham.ts
+                <span className="text-sky-500 font-bold">TS</span> pratham.ts
               </div>
               {/* File Encoding / Live Status Dot */}
               <div className="flex items-center gap-1.5 text-[11px] text-[var(--muted-foreground)] font-sans">
-                <span className="w-2 h-2 rounded-full bg-zinc-400 dark:bg-zinc-500 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 UTF-8
               </div>
             </div>
 
-            {/* Code Body Container with Line Numbers & Syntax Highlighting */}
+            {/* Code Body Container with Line Numbers & Monochrome Syntax */}
             <div className="p-4 sm:p-6 overflow-x-auto leading-relaxed text-xs sm:text-sm">
               <div className="flex gap-4">
                 {/* Line Numbers Sidebar */}
@@ -70,44 +70,44 @@ const AboutMe = () => {
                 {/* TypeScript Code Representation */}
                 <div className="space-y-1 font-mono">
                   <div>
-                    <span className="text-[var(--foreground)] font-semibold">const</span>{" "}
+                    <span className="text-indigo-500 dark:text-indigo-400 font-semibold">const</span>{" "}
                     <span className="text-[var(--foreground)] font-semibold">developer</span>{" "}
                     <span className="text-[var(--muted-foreground)]">=</span>{" "}
-                    <span className="text-[var(--muted-foreground)]">&#123;</span>
+                    <span className="text-amber-500 dark:text-amber-400">&#123;</span>
                   </div>
                   <div className="pl-4">
-                    <span className="text-[var(--muted-foreground)]">role:</span>{" "}
-                    <span className="text-[var(--foreground)]">"Full Stack Developer"</span>,
+                    <span className="text-sky-500 dark:text-sky-400 font-medium">role:</span>{" "}
+                    <span className="text-emerald-500 dark:text-emerald-400 font-medium">"Full Stack Developer"</span>,
                   </div>
                   <div className="pl-4">
-                    <span className="text-[var(--muted-foreground)]">frontend:</span>{" "}
-                    <span className="text-[var(--muted-foreground)]">[</span>
-                    <span className="text-[var(--foreground)]">"Next.js"</span>,{" "}
-                    <span className="text-[var(--foreground)]">"TypeScript"</span>
-                    <span className="text-[var(--muted-foreground)]">]</span>,
+                    <span className="text-sky-500 dark:text-sky-400 font-medium">frontend:</span>{" "}
+                    <span className="text-amber-500 dark:text-amber-400">[</span>
+                    <span className="text-emerald-500 dark:text-emerald-400 font-medium">"Next.js"</span>,{" "}
+                    <span className="text-emerald-500 dark:text-emerald-400 font-medium">"TypeScript"</span>
+                    <span className="text-amber-500 dark:text-amber-400">]</span>,
                   </div>
                   <div className="pl-4">
-                    <span className="text-[var(--muted-foreground)]">backend:</span>{" "}
-                    <span className="text-[var(--muted-foreground)]">[</span>
-                    <span className="text-[var(--foreground)]">"Node.js"</span>,{" "}
-                    <span className="text-[var(--foreground)]">"FastAPI"</span>
-                    <span className="text-[var(--muted-foreground)]">]</span>,
+                    <span className="text-sky-500 dark:text-sky-400 font-medium">backend:</span>{" "}
+                    <span className="text-amber-500 dark:text-amber-400">[</span>
+                    <span className="text-emerald-500 dark:text-emerald-400 font-medium">"Node.js"</span>,{" "}
+                    <span className="text-emerald-500 dark:text-emerald-400 font-medium">"FastAPI"</span>
+                    <span className="text-amber-500 dark:text-amber-400">]</span>,
                   </div>
                   <div className="pl-4">
-                    <span className="text-[var(--muted-foreground)]">database:</span>{" "}
-                    <span className="text-[var(--muted-foreground)]">[</span>
-                    <span className="text-[var(--foreground)]">"MongoDB"</span>,{" "}
-                    <span className="text-[var(--foreground)]">"SQL"</span>
-                    <span className="text-[var(--muted-foreground)]">]</span>,
+                    <span className="text-sky-500 dark:text-sky-400 font-medium">database:</span>{" "}
+                    <span className="text-amber-500 dark:text-amber-400">[</span>
+                    <span className="text-emerald-500 dark:text-emerald-400 font-medium">"MongoDB"</span>,{" "}
+                    <span className="text-emerald-500 dark:text-emerald-400 font-medium">"SQL"</span>
+                    <span className="text-amber-500 dark:text-amber-400">]</span>,
                   </div>
                   <div className="pl-4">
-                    <span className="text-[var(--muted-foreground)]">focus:</span>{" "}
-                    <span className="text-[var(--foreground)]">"Backend Engineering"</span>
+                    <span className="text-sky-500 dark:text-sky-400 font-medium">focus:</span>{" "}
+                    <span className="text-emerald-500 dark:text-emerald-400 font-medium">"Fullstack Engineering"</span>
                   </div>
                   <div>
-                    <span className="text-[var(--muted-foreground)]">&#125;</span>;
+                    <span className="text-amber-500 dark:text-amber-400">&#125;</span>;
                     {/* Animated Blinking Cursor */}
-                    <span className="inline-block w-2 h-4 ml-1.5 bg-[var(--foreground)] animate-pulse align-middle" />
+                    <span className="inline-block w-2 h-4 ml-1.5 bg-indigo-500 dark:bg-indigo-400 animate-pulse align-middle" />
                   </div>
                 </div>
               </div>

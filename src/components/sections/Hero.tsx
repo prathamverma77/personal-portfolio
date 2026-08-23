@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiGithub, FiLinkedin, FiMail, FiArrowUpRight } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiArrowUpRight, FiTwitter } from 'react-icons/fi';
 
 /**
  * Hero Section Component
@@ -84,6 +84,15 @@ const Hero = () => {
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--background)]/60 hover:bg-[var(--accent)] hover:border-[var(--foreground)]/40 text-[var(--foreground)] transition-all shadow-sm"
                         >
                             <FiLinkedin className="text-base text-[var(--foreground)]" /> LinkedIn
+                        </a>
+                        {/* Twitter / X Profile */}
+                        <a
+                            href="https://x.com/Pratham39423901"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--background)]/60 hover:bg-[var(--accent)] hover:border-[var(--foreground)]/40 text-[var(--foreground)] transition-all shadow-sm"
+                        >
+                            <FiTwitter className="text-base text-[var(--foreground)]" /> Twitter / X
                         </a>
                         {/* Direct Email */}
                         <a

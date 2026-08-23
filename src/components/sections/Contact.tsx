@@ -86,7 +86,9 @@ const Contact = () => {
                   LinkedIn
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/Pratham39423901"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 py-2 text-xs font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--background)] transition-colors"
                 >
                   Twitter / X
