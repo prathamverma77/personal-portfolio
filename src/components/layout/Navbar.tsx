@@ -50,7 +50,7 @@ export default function Navbar() {
           href="#hero" 
           className="font-extrabold text-xl tracking-tight text-[var(--foreground)] hover:text-[var(--brand-accent)] transition-colors flex items-center gap-1"
         >
-          Pratham<span className="text-[var(--brand-accent)]">.</span>
+          Pratham
         </Link>
 
         {/* Desktop Links, Theme Toggle & Hire Me CTA */}

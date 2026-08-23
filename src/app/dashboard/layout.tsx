@@ -15,6 +15,7 @@ import {
   FiExternalLink,
   FiSun,
   FiMoon,
+  FiFileText,
 } from 'react-icons/fi';
 
 const NAV_ITEMS = [
@@ -22,6 +23,7 @@ const NAV_ITEMS = [
   { label: 'Messages', href: '/dashboard/messages', icon: FiMail },
   { label: 'Projects', href: '/dashboard/projects', icon: FiFolder },
   { label: 'Experience', href: '/dashboard/experience', icon: FiBriefcase },
+  { label: 'Resume', href: '/dashboard/resume', icon: FiFileText },
 ];
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -78,7 +80,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <header className="md:hidden flex items-center justify-between px-4 py-3 bg-[var(--card)] border-b border-[var(--border)] sticky top-0 z-40">
         <div className="flex items-center gap-2 font-bold text-sm">
           <FiShield className="text-base text-[var(--foreground)]" />
-          <span>Pratham. Admin</span>
+          <span>Pratham Admin</span>
         </div>
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -104,7 +106,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </div>
               <div>
                 <span className="font-bold text-base tracking-tight text-[var(--foreground)] block">
-                  Pratham.
+                  Pratham
                 </span>
                 <span className="text-[11px] text-[var(--muted-foreground)] uppercase tracking-wider font-semibold">
                   Control Center

@@ -30,6 +30,11 @@ const Contact = () => {
     e.preventDefault();
     if (loading || cooldown > 0) return;
 
+    if (formData.message.length > 500) {
+      setError(`Message cannot exceed 500 characters (currently ${formData.message.length} characters)`);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
@@ -192,14 +197,22 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs font-semibold text-[var(--muted-foreground)] uppercase mb-2">
-                    Message
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label htmlFor="message" className="block text-xs font-semibold text-[var(--muted-foreground)] uppercase">
+                      Message
+                    </label>
+                    <span className={`text-[11px] font-mono ${
+                      formData.message.length > 500 ? 'text-rose-500 font-bold' : 'text-[var(--muted-foreground)]'
+                    }`}>
+                      {formData.message.length} / 500 chars
+                    </span>
+                  </div>
                   <textarea
                     id="message"
                     required
+                    maxLength={500}
                     rows={4}
-                    placeholder="Your message here..."
+                    placeholder="Your message here (max 500 characters)..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     className="w-full px-4 py-2.5 rounded-[var(--radius)] bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] placeholder-[var(--muted-foreground)] text-sm focus:outline-none focus:ring-2 focus:ring-[var(--ring)] transition-colors resize-none"

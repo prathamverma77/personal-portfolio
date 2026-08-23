@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { FiGithub, FiLinkedin, FiMail, FiArrowUpRight, FiTwitter } from 'react-icons/fi';
 import { useHireMeModal } from '@/context/HireMeModalContext';
 
@@ -13,6 +13,26 @@ import { useHireMeModal } from '@/context/HireMeModalContext';
  */
 const Hero = () => {
     const { openModal } = useHireMeModal();
+    const [resumeLoading, setResumeLoading] = useState(false);
+
+    const handleResumeClick = async (e: React.MouseEvent) => {
+        e.preventDefault();
+        setResumeLoading(true);
+        try {
+            const res = await fetch('/api/resume/active');
+            const data = await res.json();
+            if (res.ok && data.success && data.resume?.url) {
+                window.open(data.resume.url, '_blank');
+            } else {
+                window.open('/resume.pdf', '_blank');
+            }
+        } catch (err) {
+            console.error('Resume fetch error:', err);
+            window.open('/resume.pdf', '_blank');
+        } finally {
+            setResumeLoading(false);
+        }
+    };
 
     return (
         <section id="hero" className="w-full min-h-[85vh] lg:min-h-[calc(100vh-4rem)] flex items-center justify-center relative bg-transparent text-[var(--foreground)] overflow-hidden py-12 lg:py-0">
@@ -24,26 +44,26 @@ const Hero = () => {
             <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[450px] bg-[radial-gradient(ellipse_at_center,var(--primary)/0.12_0%,transparent_70%)] blur-3xl pointer-events-none" />
 
             {/* Main Content Layout Container */}
-            <div className="relative z-10 w-full max-w-6xl mx-auto px-4 flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+            <div className="relative z-10 w-full max-w-6xl mx-auto px-4 flex flex-col-reverse lg:flex-row items-center justify-between gap-6 lg:gap-12">
                 {/* Left Column: Developer Information & Bio */}
                 <div className="max-w-2xl text-center lg:text-left">
                     {/* Greeting Header */}
-                    <p className="text-lg md:text-xl font-medium text-[var(--primary)] mb-2">
+                    <p className="text-base sm:text-lg md:text-xl font-medium text-[var(--primary)] mb-0.5 sm:mb-2">
                         Hi, I'm
                     </p>
 
                     {/* Developer Name */}
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-3 text-[var(--foreground)]">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-1 sm:mb-3 text-[var(--foreground)]">
                         Pratham Verma
                     </h1>
 
                     {/* Primary Role / Title */}
-                    <h2 className="text-xl md:text-2xl font-semibold text-[var(--muted-foreground)] mb-6 tracking-wide">
+                    <h2 className="text-lg sm:text-2xl font-semibold text-[var(--muted-foreground)] mb-4 sm:mb-6 tracking-wide">
                         Full Stack Developer
                     </h2>
 
                     {/* Short Introduction Paragraph */}
-                    <p className="text-base md:text-lg text-[var(--muted-foreground)] mb-8 leading-relaxed max-w-xl">
+                    <p className="text-sm sm:text-lg text-[var(--muted-foreground)] mb-6 sm:mb-8 leading-relaxed max-w-xl">
                         I build <span className="text-[var(--foreground)] font-semibold underline decoration-zinc-500/30 underline-offset-4">production-ready</span> web applications,
                         from modern Next.js frontends to scalable
                         REST APIs and backend services using
@@ -60,14 +80,13 @@ const Hero = () => {
                             Hire Me
                         </button>
                         {/* Resume Download Link */}
-                        <a
-                            href="/resume.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-[var(--background)] text-[var(--foreground)] font-medium px-6 py-3 rounded-[var(--radius)] text-base border border-[var(--border)] hover:bg-[var(--accent)] hover:border-[var(--foreground)]/40 transition-all inline-flex items-center gap-2"
+                        <button
+                            onClick={handleResumeClick}
+                            disabled={resumeLoading}
+                            className="bg-[var(--background)] text-[var(--foreground)] font-medium px-6 py-3 rounded-[var(--radius)] text-base border border-[var(--border)] hover:bg-[var(--accent)] hover:border-[var(--foreground)]/40 transition-all inline-flex items-center gap-2 disabled:opacity-50 cursor-pointer"
                         >
-                            Resume <FiArrowUpRight className="text-lg" />
-                        </a>
+                            {resumeLoading ? 'Opening...' : 'Resume'} <FiArrowUpRight className="text-lg" />
+                        </button>
                     </div>
 
                     {/* Social Media & Contact Links */}
@@ -110,12 +129,12 @@ const Hero = () => {
                 </div>
 
                 {/* Right Column: Profile Image Display */}
-                <div className="relative w-full max-w-md flex justify-center">
+                <div className="relative w-full max-w-xs flex justify-center">
                     {/* Subtle monochrome ambient shadow directly behind profile image */}
-                    <div className="absolute -inset-8 sm:-inset-12 rounded-full bg-[radial-gradient(circle_at_center,var(--foreground)/0.06_0%,transparent_70%)] blur-2xl pointer-events-none" />
+                    <div className="absolute -inset-6 sm:-inset-10 rounded-full bg-[radial-gradient(circle_at_center,var(--foreground)/0.06_0%,transparent_70%)] blur-2xl pointer-events-none" />
 
                     {/* Rounded Profile Image Container with subtle ring and hover scaling */}
-                    <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-[380px] md:h-[380px] rounded-full overflow-hidden ring-1 ring-[var(--border)] shadow-xl transition-all duration-700 ease-out hover:scale-[1.02] hover:ring-[var(--foreground)]/30 group">
+                    <div className="relative w-40 h-40 sm:w-56 sm:h-56 md:w-[290px] md:h-[290px] rounded-full overflow-hidden ring-1 ring-[var(--border)] shadow-xl transition-all duration-700 ease-out hover:scale-[1.02] hover:ring-[var(--foreground)]/30 group">
                         <img
                             src="/portfolio%20pic.jpeg"
                             alt="Pratham Verma"

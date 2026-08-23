@@ -12,6 +12,7 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.10",
     "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.10.1",
     "framer-motion": "^12.42.2",
     "jose": "^6.2.10",
     "jsonwebtoken": "^9.0.3",

@@ -51,6 +51,11 @@ export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
     e.preventDefault();
     if (loading || cooldown > 0) return;
 
+    if (formData.message.length > 500) {
+      setError(`Message cannot exceed 500 characters (currently ${formData.message.length} characters)`);
+      return;
+    }
+
     setLoading(true);
     setError(null);
 
@@ -163,13 +168,21 @@ export default function HireMeModal({ isOpen, onClose }: HireMeModalProps) {
 
               {/* Message Input */}
               <div>
-                <label className="block text-xs font-semibold text-[var(--muted-foreground)] uppercase mb-1.5 flex items-center gap-1.5">
-                  <FiMessageSquare className="text-xs" /> Message
-                </label>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="block text-xs font-semibold text-[var(--muted-foreground)] uppercase flex items-center gap-1.5">
+                    <FiMessageSquare className="text-xs" /> Message
+                  </label>
+                  <span className={`text-[11px] font-mono ${
+                    formData.message.length > 500 ? 'text-rose-500 font-bold' : 'text-[var(--muted-foreground)]'
+                  }`}>
+                    {formData.message.length} / 500 chars
+                  </span>
+                </div>
                 <textarea
                   required
+                  maxLength={500}
                   rows={4}
-                  placeholder="Describe your project, role, or inquiry..."
+                  placeholder="Describe your project, role, or inquiry (max 500 characters)..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-4 py-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] placeholder-[var(--muted-foreground)] text-xs sm:text-sm focus:outline-none focus:border-[var(--foreground)] transition-colors resize-none"

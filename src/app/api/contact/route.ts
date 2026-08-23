@@ -15,6 +15,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (message.trim().length > 500) {
+      return NextResponse.json(
+        { success: false, message: `Message cannot exceed 500 characters (currently ${message.trim().length} characters)` },
+        { status: 400 }
+      );
+    }
+
     await connectDB();
 
     const newMessage = await Message.create({
