@@ -67,7 +67,7 @@ const ExpTimeline = () => {
     <section id="experience" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="flex flex-col items-start mb-16">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left mb-16">
           <span className="text-sm font-semibold tracking-wider uppercase text-[var(--muted-foreground)] mb-2">
             Career & Journey
           </span>
@@ -84,20 +84,20 @@ const ExpTimeline = () => {
               <div className="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-[var(--foreground)] border-2 border-[var(--background)] group-hover:scale-125 transition-transform duration-200" />
 
               {/* Date Badge on Desktop Left Margin */}
-              <div className="md:absolute md:-left-36 md:top-1 text-xs font-semibold text-[var(--muted-foreground)] uppercase tracking-wider mb-2 md:mb-0">
+              <div className="md:absolute md:-left-36 md:top-1 text-xs font-semibold text-[var(--muted-foreground)] uppercase tracking-wider mb-2 md:mb-0 text-left md:text-right">
                 {exp.period}
               </div>
 
               {/* Experience Content Card */}
               <div className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 shadow-sm hover:border-[var(--foreground)]/30 transition-all duration-200">
                 {/* Header: Role, Highlighted Organisation & Time Period */}
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-5 pb-4 border-b border-[var(--border)]/60">
-                  <div className="flex flex-col gap-2">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left justify-between gap-3 mb-5 pb-4 border-b border-[var(--border)]/60">
+                  <div className="flex flex-col items-center sm:items-start gap-2">
                     <h3 className="text-xl font-extrabold text-[var(--foreground)] tracking-tight">
                       {exp.role}
                     </h3>
                     {/* Highlighted Organisation Name Badge */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-center sm:justify-start gap-2">
                       <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[var(--foreground)] text-[var(--background)] font-bold text-xs shadow-xs tracking-wide">
                         <FiBriefcase className="text-xs" /> {exp.company}
                       </span>
@@ -105,14 +105,14 @@ const ExpTimeline = () => {
                   </div>
 
                   {/* Prominent Duration / Time Period Pill */}
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] text-xs font-bold self-start sm:self-auto shadow-2xs">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] text-xs font-bold self-center sm:self-auto shadow-2xs">
                     <FiCalendar className="text-xs text-[var(--muted-foreground)]" />
                     <span>{exp.period}</span>
                   </div>
                 </div>
 
                 {/* Responsibilities List */}
-                <ul className="list-disc list-inside space-y-2 text-sm text-[var(--muted-foreground)] leading-relaxed mb-6">
+                <ul className="list-disc list-inside space-y-2 text-sm text-[var(--muted-foreground)] leading-relaxed mb-6 text-left">
                   {exp.responsibilities.map((resp, idx) => (
                     <li key={idx} className="pl-1">
                       <span>{resp}</span>
@@ -122,11 +122,11 @@ const ExpTimeline = () => {
 
                 {/* Live Deployed Projects Links */}
                 {exp.liveProjects && exp.liveProjects.length > 0 && (
-                  <div className="mb-6 pt-4 border-t border-[var(--border)]/60">
+                  <div className="mb-6 pt-4 border-t border-[var(--border)]/60 text-center sm:text-left">
                     <span className="text-xs font-semibold uppercase tracking-wider text-[var(--muted-foreground)] block mb-2.5">
                       Live Deployed Work
                     </span>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap justify-center sm:justify-start gap-2">
                       {exp.liveProjects.map((project, pIdx) => (
                         <a
                           key={pIdx}
@@ -143,7 +143,7 @@ const ExpTimeline = () => {
                 )}
 
                 {/* Tech Skills Badges */}
-                <div className="flex flex-wrap gap-2 pt-2">
+                <div className="flex flex-wrap justify-center sm:justify-start gap-2 pt-2">
                   {exp.skills.map((skill) => (
                     <span
                       key={skill}

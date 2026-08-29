@@ -3,10 +3,10 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer className="w-full py-6 bg-transparent text-[var(--muted-foreground)] border-t border-[var(--border)]/50 transition-colors duration-200">
-      <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-medium">
+      <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-medium text-center sm:text-left">
         <p>© {new Date().getFullYear()} Pratham Verma. Built with Next.js & Tailwind CSS.</p>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center justify-center gap-4">
           <a
             href="https://github.com/prathamverma77"
             target="_blank"

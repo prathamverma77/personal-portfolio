@@ -31,7 +31,7 @@ const GithubStats = () => {
     <section className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="flex flex-col items-start mb-12">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left mb-12">
           <span className="text-sm font-semibold tracking-wider uppercase text-[var(--muted-foreground)] mb-2">
             Open Source & Activity
           </span>

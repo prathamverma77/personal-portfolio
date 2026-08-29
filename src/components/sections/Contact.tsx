@@ -65,7 +65,7 @@ const Contact = () => {
     <section id="contact" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="flex flex-col items-start mb-12">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left mb-12">
           <span className="text-sm font-semibold tracking-wider uppercase text-[var(--muted-foreground)] mb-2">
             Let's Connect
           </span>
@@ -76,13 +76,13 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Column: Contact Info */}
-          <div className="flex flex-col space-y-6">
+          <div className="flex flex-col space-y-6 text-center lg:text-left">
             <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
               I am currently open to new opportunities, freelance projects, and collaborations. Have a question or want to work together? Feel free to send a message!
             </p>
 
             <div className="space-y-4 pt-2">
-              <div className="flex items-center space-x-4 p-4 rounded-[var(--radius)] bg-[var(--card)] border border-[var(--border)]">
+              <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 p-4 rounded-[var(--radius)] bg-[var(--card)] border border-[var(--border)] text-center sm:text-left">
                 <div className="p-2.5 rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] text-lg">
                   ✉️
                 </div>
@@ -94,7 +94,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4 p-4 rounded-[var(--radius)] bg-[var(--card)] border border-[var(--border)]">
+              <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 p-4 rounded-[var(--radius)] bg-[var(--card)] border border-[var(--border)] text-center sm:text-left">
                 <div className="p-2.5 rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] text-lg">
                   📍
                 </div>
@@ -109,8 +109,8 @@ const Contact = () => {
 
             {/* Social Links */}
             <div className="pt-2">
-              <h4 className="text-xs font-semibold text-[var(--muted-foreground)] uppercase mb-3">Follow & Connect</h4>
-              <div className="flex flex-wrap gap-3">
+              <h4 className="text-xs font-semibold text-[var(--muted-foreground)] uppercase mb-3 text-center lg:text-left">Follow & Connect</h4>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-3">
                 <a
                   href="https://github.com/prathamverma77"
                   target="_blank"

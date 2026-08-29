@@ -160,7 +160,7 @@ const MyStack = () => {
     <section id="stack" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="flex flex-col items-start mb-12">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left mb-12">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--foreground)]">
             Tech Stack
           </h2>
@@ -174,10 +174,10 @@ const MyStack = () => {
               className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 flex flex-col justify-between shadow-sm hover:border-[var(--brand-accent)]/40 transition-all duration-300"
             >
               <div>
-                <h3 className="text-2xl font-bold mb-2 text-[var(--foreground)]">
+                <h3 className="text-2xl font-bold mb-2 text-[var(--foreground)] text-center md:text-left">
                   {cat.category}
                 </h3>
-                <p className="text-sm text-[var(--muted-foreground)] mb-6 leading-relaxed">
+                <p className="text-sm text-[var(--muted-foreground)] mb-6 leading-relaxed text-center md:text-left">
                   {cat.description}
                 </p>
 

@@ -7,7 +7,7 @@ const AboutMe = () => {
       {/* 2-Column Responsive Layout Grid */}
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Column: Developer Overview & Technical Scope */}
-        <div className="flex flex-col items-start text-left space-y-4">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
           {/* Section Heading */}
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-2 text-[var(--foreground)]">
             About Me

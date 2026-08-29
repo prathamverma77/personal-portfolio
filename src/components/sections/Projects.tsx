@@ -39,7 +39,7 @@ const Projects = () => {
     <section id="projects" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="flex flex-col items-start mb-12">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left mb-12">
           <span className="text-sm font-semibold tracking-wider uppercase text-[var(--muted-foreground)] mb-2">
             Featured Work
           </span>
@@ -88,24 +88,24 @@ const Projects = () => {
                 </div>
 
                 {/* Subtitle Badge */}
-                <span className="text-xs font-semibold uppercase tracking-wider text-[var(--muted-foreground)] block mb-2">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[var(--muted-foreground)] block mb-2 text-center sm:text-left">
                   {project.subtitle}
                 </span>
 
                 {/* Project Title */}
-                <h3 className="text-xl font-bold mb-3 text-[var(--foreground)] group-hover:text-[var(--foreground)] transition-colors">
+                <h3 className="text-xl font-bold mb-3 text-[var(--foreground)] group-hover:text-[var(--foreground)] transition-colors text-center sm:text-left">
                   {project.title}
                 </h3>
 
                 {/* Project Description */}
-                <p className="text-sm text-[var(--muted-foreground)] mb-6 leading-relaxed">
+                <p className="text-sm text-[var(--muted-foreground)] mb-6 leading-relaxed text-center sm:text-left">
                   {project.description}
                 </p>
               </div>
 
               <div>
                 {/* Tech Tags */}
-                <div className="flex flex-wrap gap-2 mb-6 pt-4 border-t border-[var(--border)]/60">
+                <div className="flex flex-wrap justify-center sm:justify-start gap-2 mb-6 pt-4 border-t border-[var(--border)]/60">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
