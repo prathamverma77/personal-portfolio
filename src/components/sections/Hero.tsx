@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiGithub, FiLinkedin, FiMail, FiArrowUpRight, FiTwitter } from 'react-icons/fi';
 import { useHireMeModal } from '@/context/HireMeModalContext';
 
@@ -13,26 +13,22 @@ import { useHireMeModal } from '@/context/HireMeModalContext';
  */
 const Hero = () => {
     const { openModal } = useHireMeModal();
-    const [resumeLoading, setResumeLoading] = useState(false);
+    const [resumeUrl, setResumeUrl] = useState('/resume.pdf');
 
-    const handleResumeClick = async (e: React.MouseEvent) => {
-        e.preventDefault();
-        setResumeLoading(true);
-        try {
-            const res = await fetch('/api/resume/active');
-            const data = await res.json();
-            if (res.ok && data.success && data.resume?.url) {
-                window.open(data.resume.url, '_blank');
-            } else {
-                window.open('/resume.pdf', '_blank');
+    useEffect(() => {
+        const fetchActiveResume = async () => {
+            try {
+                const res = await fetch('/api/resume/active');
+                const data = await res.json();
+                if (res.ok && data.success && data.resume?.url) {
+                    setResumeUrl(data.resume.url);
+                }
+            } catch (err) {
+                console.error('Failed to pre-fetch active resume:', err);
             }
-        } catch (err) {
-            console.error('Resume fetch error:', err);
-            window.open('/resume.pdf', '_blank');
-        } finally {
-            setResumeLoading(false);
-        }
-    };
+        };
+        fetchActiveResume();
+    }, []);
 
     return (
         <section id="hero" className="w-full min-h-[85vh] lg:min-h-[calc(100vh-4rem)] flex items-center justify-center relative bg-transparent text-[var(--foreground)] overflow-hidden py-12 lg:py-0">
@@ -80,13 +76,14 @@ const Hero = () => {
                             Hire Me
                         </button>
                         {/* Resume Download Link */}
-                        <button
-                            onClick={handleResumeClick}
-                            disabled={resumeLoading}
-                            className="bg-[var(--background)] text-[var(--foreground)] font-medium px-6 py-3 rounded-[var(--radius)] text-base border border-[var(--border)] hover:bg-[var(--accent)] hover:border-[var(--foreground)]/40 transition-all inline-flex items-center gap-2 disabled:opacity-50 cursor-pointer"
+                        <a
+                            href={resumeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="bg-[var(--background)] text-[var(--foreground)] font-medium px-6 py-3 rounded-[var(--radius)] text-base border border-[var(--border)] hover:bg-[var(--accent)] hover:border-[var(--foreground)]/40 transition-all inline-flex items-center gap-2 cursor-pointer"
                         >
-                            {resumeLoading ? 'Opening...' : 'Resume'} <FiArrowUpRight className="text-lg" />
-                        </button>
+                            Resume <FiArrowUpRight className="text-lg" />
+                        </a>
                     </div>
 
                     {/* Social Media & Contact Links */}

@@ -27,7 +27,12 @@ export async function GET() {
           url: activeResume.cloudinaryUrl,
         },
       },
-      { status: 200 }
+      {
+        status: 200,
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        },
+      }
     );
   } catch (error) {
     console.error('API /api/resume/active GET Error:', error);
