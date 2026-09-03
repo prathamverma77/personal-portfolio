@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { connectDB } from '@/lib/db';
 import Resume from '@/models/Resume';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/resume/active: Public endpoint returning current active resume URL
 export async function GET() {
   try {
@@ -30,7 +32,7 @@ export async function GET() {
       {
         status: 200,
         headers: {
-          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
         },
       }
     );

@@ -18,7 +18,7 @@ const Hero = () => {
     useEffect(() => {
         const fetchActiveResume = async () => {
             try {
-                const res = await fetch('/api/resume/active');
+                const res = await fetch('/api/resume/active', { cache: 'no-store' });
                 const data = await res.json();
                 if (res.ok && data.success && data.resume?.url) {
                     setResumeUrl(data.resume.url);
