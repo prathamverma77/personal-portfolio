@@ -13,7 +13,7 @@ import { useHireMeModal } from '@/context/HireMeModalContext';
  */
 const Hero = () => {
     const { openModal } = useHireMeModal();
-    const [resumeUrl, setResumeUrl] = useState('/resume.pdf');
+    const [resumeUrl, setResumeUrl] = useState('/resume');
 
     useEffect(() => {
         const fetchActiveResume = async () => {
