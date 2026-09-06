@@ -27,4 +27,4 @@ A sleek, responsive, and high-performance developer portfolio built with **Next.
 
 **Pratham Verma**
 - GitHub: [@prathamverma77](https://github.com/prathamverma77)
-- LinkedIn: [Pratham Verma](https://linkedin.com/in/pratham-verma)
+- LinkedIn: [Pratham Verma](https://www.linkedin.com/in/prathamverma77/)
