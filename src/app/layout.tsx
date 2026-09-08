@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Pratham Verma — Portfolio",
   description: "Personal portfolio and software engineering showcase",
+  icons: {
+    icon: "/portfolio%20pic.jpeg",
+    shortcut: "/portfolio%20pic.jpeg",
+    apple: "/portfolio%20pic.jpeg",
+  },
 };
 
 export default function RootLayout({
