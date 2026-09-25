@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
 
 // Pure inline SVG components for each technology
 const TechIcons: Record<string, React.JSX.Element> = {
@@ -27,7 +30,7 @@ const TechIcons: Record<string, React.JSX.Element> = {
   ),
   'Tailwind CSS': (
     <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 6c-3.3 0-5.3 1.6-6 4.9 1.3-1.6 2.8-2.2 4.5-1.7 1 .3 1.7 1 2.5 1.8 1.3 1.3 2.8 2.8 6.5 2.8 3.3 0 5.3-1.6 6-4.9-1.3 1.6-2.8 2.2-4.5 1.7-1-.3-1.7-1-2.5-1.8C17.2 7.6 15.7 6 12 6zM6 13.9c-3.3 0-5.3 1.6-6 4.9 1.3-1.6 2.8-2.2 4.5-1.7 1 .3 1.7 1 2.5 1.8 1.3 1.3 2.8 2.8 6.5 2.8 3.3 0 5.3-1.6 6-4.9-1.3 1.6-2.8 2.2-4.5 1.7-1-.3-1.7-1-2.5-1.8-1.3-1.3-2.8-2.9-6.5-2.9z" />
+      <path d="M12 6c-3.3 0-5.3 1.6-6 4.9 1.3-1.6 2.8-2.2 4.5-1.7 1 .3 1.7 1 2.5 1.8 1.3 1.3 2.8 2.8 6.5 2.8 3.3 0 5.3-1.6 6-4.9-1.3 1.6-2.8 2.2-4.5 1.7-1-.3-1.7-1-2.5-1.8C17.2 7.6 15.7 6 12 6zM6 13.9c-3.3 0-5.3 1.6-6 4.9 1.3-1.6-2.8-2.2 4.5-1.7 1 .3 1.7 1 2.5 1.8 1.3 1.3 2.8 2.8 6.5 2.8 3.3 0 5.3-1.6 6-4.9-1.3 1.6-2.8 2.2-4.5 1.7-1-.3-1.7-1-2.5-1.8-1.3-1.3-2.8-2.9-6.5-2.9z" />
     </svg>
   ),
   HTML5: (
@@ -157,21 +160,31 @@ const STACK_CATEGORIES = [
 
 const MyStack = () => {
   return (
-    <section id="stack" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50">
+    <section id="stack" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left mb-12">
+        <motion.div 
+          className="flex flex-col items-center md:items-start text-center md:text-left mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--foreground)]">
             Tech Stack
           </h2>
-        </div>
+        </motion.div>
 
         {/* Grouped Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {STACK_CATEGORIES.map((cat) => (
-            <div
+          {STACK_CATEGORIES.map((cat, idx) => (
+            <motion.div
               key={cat.category}
               className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 flex flex-col justify-between shadow-sm hover:border-[var(--brand-accent)]/40 transition-all duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
             >
               <div>
                 <h3 className="text-2xl font-bold mb-2 text-[var(--foreground)] text-center md:text-left">
@@ -202,16 +215,9 @@ const MyStack = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-
-        {/* Footer Focus Line
-        <div className="flex items-center justify-center p-4 rounded-[var(--radius)] bg-[var(--accent)]/40 border border-[var(--border)] text-xs sm:text-sm text-[var(--muted-foreground)] text-center font-medium">
-          <span>
-            <strong className="text-[var(--foreground)]">Currently focused on:</strong> Backend engineering · API design · Database architecture · System design
-          </span>
-        </div> */}
       </div>
     </section>
   );

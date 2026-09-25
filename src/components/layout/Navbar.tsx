@@ -46,8 +46,8 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-[var(--background)]/80 backdrop-blur-md text-[var(--foreground)] border-b border-[var(--border)] transition-colors duration-200">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link 
-          href="#hero" 
+        <Link
+          href="#hero"
           className="font-extrabold text-xl tracking-tight text-[var(--foreground)] hover:text-[var(--brand-accent)] transition-colors flex items-center gap-1"
         >
           Pratham
@@ -56,9 +56,9 @@ export default function Navbar() {
         {/* Desktop Links, Theme Toggle & Hire Me CTA */}
         <div className="hidden md:flex items-center gap-2 text-sm font-medium">
           {NAV_LINKS.map((link) => (
-            <a 
-              key={link.href} 
-              href={link.href} 
+            <a
+              key={link.href}
+              href={link.href}
               className="px-3 py-2 rounded-[var(--radius)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors text-xs font-semibold"
             >
               {link.label}
@@ -117,9 +117,9 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden border-t border-[var(--border)] bg-[var(--popover)] text-[var(--popover-foreground)] px-4 py-3 flex flex-col gap-2 text-sm font-medium">
           {NAV_LINKS.map((link) => (
-            <a 
-              key={link.href} 
-              href={link.href} 
+            <a
+              key={link.href}
+              href={link.href}
               onClick={() => setIsOpen(false)}
               className="px-3 py-2 rounded-[var(--radius)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors"
             >

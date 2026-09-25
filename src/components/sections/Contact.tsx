@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -62,21 +63,33 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50">
+    <section id="contact" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left mb-12">
+        <motion.div 
+          className="flex flex-col items-center md:items-start text-center md:text-left mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.5 }}
+        >
           <span className="text-sm font-semibold tracking-wider uppercase text-[var(--muted-foreground)] mb-2">
             Let's Connect
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--foreground)]">
             Contact Me
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Column: Contact Info */}
-          <div className="flex flex-col space-y-6 text-center lg:text-left">
+          <motion.div 
+            className="flex flex-col space-y-6 text-center lg:text-left"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6 }}
+          >
             <p className="text-base md:text-lg text-[var(--muted-foreground)] leading-relaxed">
               I am currently open to new opportunities, freelance projects, and collaborations. Have a question or want to work together? Feel free to send a message!
             </p>
@@ -137,10 +150,16 @@ const Contact = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Contact Form */}
-          <div className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 shadow-sm">
+          <motion.div 
+            className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 shadow-sm"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
             {submitted ? (
               <div className="py-12 text-center space-y-4">
                 <div className="text-4xl">✅</div>
@@ -238,7 +257,7 @@ const Contact = () => {
                 </button>
               </form>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

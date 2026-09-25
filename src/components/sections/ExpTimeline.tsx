@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
 import { FiExternalLink, FiCalendar, FiBriefcase } from 'react-icons/fi';
 
 interface Experience {
@@ -64,22 +67,35 @@ const EXPERIENCES: Experience[] = [
 
 const ExpTimeline = () => {
   return (
-    <section id="experience" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50">
+    <section id="experience" className="w-full py-16 md:py-24 bg-transparent text-[var(--foreground)] border-t border-[var(--border)]/50 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left mb-16">
+        <motion.div 
+          className="flex flex-col items-center md:items-start text-center md:text-left mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.5 }}
+        >
           <span className="text-sm font-semibold tracking-wider uppercase text-[var(--muted-foreground)] mb-2">
             Career & Journey
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--foreground)]">
             Work Experience
           </h2>
-        </div>
+        </motion.div>
 
         {/* Timeline Structure */}
         <div className="relative border-l border-[var(--border)] ml-3 md:ml-32 space-y-12">
-          {EXPERIENCES.map((exp) => (
-            <div key={exp.id} className="relative pl-6 md:pl-10 group">
+          {EXPERIENCES.map((exp, idx) => (
+            <motion.div 
+              key={exp.id} 
+              className="relative pl-6 md:pl-10 group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: idx * 0.15 }}
+            >
               {/* Timeline Dot Indicator */}
               <div className="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-[var(--foreground)] border-2 border-[var(--background)] group-hover:scale-125 transition-transform duration-200" />
 
@@ -113,8 +129,8 @@ const ExpTimeline = () => {
 
                 {/* Responsibilities List */}
                 <ul className="list-disc list-inside space-y-2 text-sm text-[var(--muted-foreground)] leading-relaxed mb-6 text-left">
-                  {exp.responsibilities.map((resp, idx) => (
-                    <li key={idx} className="pl-1">
+                  {exp.responsibilities.map((resp, rIdx) => (
+                    <li key={rIdx} className="pl-1">
                       <span>{resp}</span>
                     </li>
                   ))}
@@ -154,7 +170,7 @@ const ExpTimeline = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
