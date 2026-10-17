@@ -170,6 +170,9 @@ const MyStack = () => {
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.5 }}
         >
+          <span className="text-sm font-semibold tracking-wider uppercase text-[var(--muted-foreground)] mb-2">
+            Technologies & Ecosystem
+          </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--foreground)]">
             Tech Stack
           </h2>
@@ -180,28 +183,35 @@ const MyStack = () => {
           {STACK_CATEGORIES.map((cat, idx) => (
             <motion.div
               key={cat.category}
-              className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 flex flex-col justify-between shadow-sm hover:border-[var(--brand-accent)]/40 transition-all duration-300"
+              className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 flex flex-col justify-between shadow-sm hover:border-[var(--brand-accent)]/50 transition-all duration-300 relative group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -6, transition: { duration: 0.25 } }}
             >
               <div>
-                <h3 className="text-2xl font-bold mb-2 text-[var(--foreground)] text-center md:text-left">
-                  {cat.category}
+                <h3 className="text-2xl font-bold mb-2 text-[var(--foreground)] text-center md:text-left flex items-center justify-center md:justify-start gap-2">
+                  <span>{cat.category}</span>
                 </h3>
                 <p className="text-sm text-[var(--muted-foreground)] mb-6 leading-relaxed text-center md:text-left">
                   {cat.description}
                 </p>
 
-                {/* Skill Cards without rating/percentages */}
+                {/* Skill Cards with micro-interactions */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {cat.skills.map((skillName) => (
-                    <div
+                  {cat.skills.map((skillName, sIdx) => (
+                    <motion.div
                       key={skillName}
-                      className="group relative p-3 rounded-[var(--radius)] bg-[var(--accent)] border border-[var(--border)] hover:border-[var(--brand-accent)]/40 hover:bg-[var(--background)] transition-all duration-200 flex items-center gap-2.5"
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: idx * 0.08 + sIdx * 0.03 }}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="group/item relative p-3 rounded-[var(--radius)] bg-[var(--accent)] border border-[var(--border)] hover:border-[var(--brand-accent)]/50 hover:bg-[var(--background)] transition-all duration-200 flex items-center gap-2.5 cursor-default shadow-2xs"
                     >
-                      <span className="text-[var(--foreground)] group-hover:scale-110 group-hover:text-[var(--brand-accent)] transition-all duration-200 flex-shrink-0">
+                      <span className="text-[var(--foreground)] group-hover/item:scale-115 group-hover/item:rotate-6 transition-all duration-200 flex-shrink-0">
                         {TechIcons[skillName] || (
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
@@ -211,7 +221,7 @@ const MyStack = () => {
                       <span className="text-sm font-semibold text-[var(--foreground)] truncate">
                         {skillName}
                       </span>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>

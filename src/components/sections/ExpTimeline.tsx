@@ -96,8 +96,17 @@ const ExpTimeline = () => {
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
             >
-              {/* Timeline Dot Indicator */}
-              <div className="absolute -left-[7px] top-1.5 w-3.5 h-3.5 rounded-full bg-[var(--foreground)] border-2 border-[var(--background)] group-hover:scale-125 transition-transform duration-200" />
+              {/* Timeline Dot Indicator with Active Pulse for Current Role */}
+              <div className="absolute -left-[7px] top-1.5 flex items-center justify-center">
+                {idx === 0 ? (
+                  <span className="relative flex h-3.5 w-3.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-[var(--background)] shadow-xs" />
+                  </span>
+                ) : (
+                  <div className="w-3.5 h-3.5 rounded-full bg-[var(--foreground)] border-2 border-[var(--background)] group-hover:scale-125 transition-transform duration-200" />
+                )}
+              </div>
 
               {/* Date Badge on Desktop Left Margin */}
               <div className="md:absolute md:-left-36 md:top-1 text-xs font-semibold text-[var(--muted-foreground)] uppercase tracking-wider mb-2 md:mb-0 text-left md:text-right">
@@ -105,7 +114,10 @@ const ExpTimeline = () => {
               </div>
 
               {/* Experience Content Card */}
-              <div className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 shadow-sm hover:border-[var(--foreground)]/30 transition-all duration-200">
+              <motion.div
+                whileHover={{ y: -5, transition: { duration: 0.25 } }}
+                className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 shadow-sm hover:border-[var(--foreground)]/30 transition-all duration-200"
+              >
                 {/* Header: Role, Highlighted Organisation & Time Period */}
                 <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left justify-between gap-3 mb-5 pb-4 border-b border-[var(--border)]/60">
                   <div className="flex flex-col items-center sm:items-start gap-2">
@@ -144,15 +156,17 @@ const ExpTimeline = () => {
                     </span>
                     <div className="flex flex-wrap justify-center sm:justify-start gap-2">
                       {exp.liveProjects.map((project, pIdx) => (
-                        <a
+                        <motion.a
                           key={pIdx}
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[var(--radius)] text-xs font-medium bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:border-[var(--foreground)]/40 transition-colors"
+                          whileHover={{ scale: 1.05, y: -2 }}
+                          whileTap={{ scale: 0.96 }}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[var(--radius)] text-xs font-medium bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:border-[var(--foreground)]/40 transition-colors cursor-pointer shadow-2xs"
                         >
                           {project.name} <FiExternalLink className="text-xs" />
-                        </a>
+                        </motion.a>
                       ))}
                     </div>
                   </div>
@@ -161,15 +175,16 @@ const ExpTimeline = () => {
                 {/* Tech Skills Badges */}
                 <div className="flex flex-wrap justify-center sm:justify-start gap-2 pt-2">
                   {exp.skills.map((skill) => (
-                    <span
+                    <motion.span
                       key={skill}
-                      className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius)] bg-[var(--background)] text-[var(--muted-foreground)] border border-[var(--border)]"
+                      whileHover={{ scale: 1.06, y: -1 }}
+                      className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius)] bg-[var(--background)] text-[var(--muted-foreground)] border border-[var(--border)] cursor-default transition-colors hover:text-[var(--foreground)] hover:border-[var(--foreground)]/30"
                     >
                       {skill}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

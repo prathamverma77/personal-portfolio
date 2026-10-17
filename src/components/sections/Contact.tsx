@@ -15,17 +15,19 @@ const Contact = () => {
   const [cooldown, setCooldown] = useState(0);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (cooldown > 0) {
-      timer = setTimeout(() => {
-        setCooldown((prev) => prev - 1);
-      }, 1000);
-    } else if (cooldown === 0 && submitted) {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }
+    if (cooldown <= 0) return;
+    const timer = setTimeout(() => {
+      setCooldown((prev) => {
+        if (prev <= 1) {
+          setSubmitted(false);
+          setFormData({ name: '', email: '', message: '' });
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
     return () => clearTimeout(timer);
-  }, [cooldown, submitted]);
+  }, [cooldown]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,7 +76,7 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
         >
           <span className="text-sm font-semibold tracking-wider uppercase text-[var(--muted-foreground)] mb-2">
-            Let's Connect
+            Let&apos;s Connect
           </span>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--foreground)]">
             Contact Me
@@ -95,7 +97,10 @@ const Contact = () => {
             </p>
 
             <div className="space-y-4 pt-2">
-              <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 p-4 rounded-[var(--radius)] bg-[var(--card)] border border-[var(--border)] text-center sm:text-left">
+              <motion.div 
+                whileHover={{ x: 6, transition: { duration: 0.2 } }}
+                className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 p-4 rounded-[var(--radius)] bg-[var(--card)] border border-[var(--border)] text-center sm:text-left shadow-xs hover:border-[var(--foreground)]/30 transition-colors cursor-default"
+              >
                 <div className="p-2.5 rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] text-lg">
                   ✉️
                 </div>
@@ -105,9 +110,12 @@ const Contact = () => {
                     prathamverma1980@gmail.com
                   </a>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 p-4 rounded-[var(--radius)] bg-[var(--card)] border border-[var(--border)] text-center sm:text-left">
+              <motion.div 
+                whileHover={{ x: 6, transition: { duration: 0.2 } }}
+                className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 p-4 rounded-[var(--radius)] bg-[var(--card)] border border-[var(--border)] text-center sm:text-left shadow-xs hover:border-[var(--foreground)]/30 transition-colors cursor-default"
+              >
                 <div className="p-2.5 rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] text-lg">
                   📍
                 </div>
@@ -117,52 +125,69 @@ const Contact = () => {
                     India
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             {/* Social Links */}
             <div className="pt-2">
               <h4 className="text-xs font-semibold text-[var(--muted-foreground)] uppercase mb-3 text-center lg:text-left">Follow & Connect</h4>
               <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                <a
+                <motion.a
                   href="https://github.com/prathamverma77"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 text-xs font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--background)] transition-colors"
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileTap={{ scale: 0.96 }}
+                  className="px-4 py-2 text-xs font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--background)] hover:border-[var(--foreground)]/40 transition-colors shadow-2xs cursor-pointer"
                 >
                   GitHub
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="https://www.linkedin.com/in/prathamverma77/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 text-xs font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--background)] transition-colors"
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileTap={{ scale: 0.96 }}
+                  className="px-4 py-2 text-xs font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--background)] hover:border-[var(--foreground)]/40 transition-colors shadow-2xs cursor-pointer"
                 >
                   LinkedIn
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href="https://x.com/Pratham39423901"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 text-xs font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--background)] transition-colors"
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  whileTap={{ scale: 0.96 }}
+                  className="px-4 py-2 text-xs font-semibold rounded-[var(--radius)] bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] hover:bg-[var(--background)] hover:border-[var(--foreground)]/40 transition-colors shadow-2xs cursor-pointer"
                 >
                   Twitter / X
-                </a>
+                </motion.a>
               </div>
             </div>
           </motion.div>
 
           {/* Right Column: Contact Form */}
           <motion.div 
-            className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 shadow-sm"
+            className="bg-[var(--card)] text-[var(--card-foreground)] border border-[var(--border)] rounded-[var(--radius)] p-6 md:p-8 shadow-sm hover:border-[var(--foreground)]/20 transition-colors"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             {submitted ? (
-              <div className="py-12 text-center space-y-4">
-                <div className="text-4xl">✅</div>
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="py-12 text-center space-y-4"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 350, damping: 15 }}
+                  className="text-4xl"
+                >
+                  ✅
+                </motion.div>
                 <h3 className="text-xl font-bold text-[var(--foreground)]">Message Sent Successfully!</h3>
                 <p className="text-sm text-[var(--muted-foreground)] max-w-sm mx-auto leading-relaxed">
                   Thank you for reaching out. Your inquiry has been delivered directly to my dashboard inbox.
@@ -175,7 +200,7 @@ const Contact = () => {
                     Form resets in <span className="font-bold text-sky-500">{cooldown}s</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 {/* Error Banner */}
@@ -238,10 +263,12 @@ const Contact = () => {
                   />
                 </div>
 
-                <button
+                <motion.button
                   type="submit"
                   disabled={loading || cooldown > 0}
-                  className="w-full py-3 px-6 rounded-[var(--radius)] bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-sm hover:opacity-90 active:scale-[0.99] transition-all disabled:opacity-50 shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 px-6 rounded-[var(--radius)] bg-[var(--primary)] text-[var(--primary-foreground)] font-semibold text-sm hover:opacity-90 transition-all disabled:opacity-50 shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                 >
                   {loading ? (
                     <>
@@ -254,7 +281,7 @@ const Contact = () => {
                   ) : (
                     'Send Message'
                   )}
-                </button>
+                </motion.button>
               </form>
             )}
           </motion.div>

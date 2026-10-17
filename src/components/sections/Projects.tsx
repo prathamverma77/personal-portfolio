@@ -67,35 +67,43 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
+              whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
             >
               <div>
                 {/* Top Card Icon & Quick Links */}
                 <div className="flex items-center justify-between mb-5">
-                  <div className="p-2.5 rounded-lg bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)]">
+                  <motion.div 
+                    whileHover={{ rotate: 10, scale: 1.1 }}
+                    className="p-2.5 rounded-lg bg-[var(--accent)] text-[var(--foreground)] border border-[var(--border)] transition-transform cursor-pointer"
+                  >
                     <FiFolder className="text-xl" />
-                  </div>
+                  </motion.div>
                   <div className="flex items-center gap-2">
                     {project.githubUrl && (
-                      <a
+                      <motion.a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-md hover:bg-[var(--accent)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                        whileHover={{ scale: 1.15, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="p-2 rounded-md hover:bg-[var(--accent)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
                         aria-label="GitHub Repository"
                       >
                         <FiGithub className="text-lg" />
-                      </a>
+                      </motion.a>
                     )}
                     {project.liveUrl && (
-                      <a
+                      <motion.a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-md hover:bg-[var(--accent)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+                        whileHover={{ scale: 1.15, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="p-2 rounded-md hover:bg-[var(--accent)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors cursor-pointer"
                         aria-label="Live Demo Link"
                       >
                         <FiExternalLink className="text-lg" />
-                      </a>
+                      </motion.a>
                     )}
                   </div>
                 </div>
@@ -120,25 +128,29 @@ const Projects = () => {
                 {/* Tech Tags */}
                 <div className="flex flex-wrap justify-center sm:justify-start gap-2 mb-6 pt-4 border-t border-[var(--border)]/60">
                   {project.tags.map((tag) => (
-                    <span
+                    <motion.span
                       key={tag}
-                      className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius)] bg-[var(--background)] text-[var(--muted-foreground)] border border-[var(--border)]"
+                      whileHover={{ scale: 1.06, y: -1 }}
+                      className="px-2.5 py-1 text-xs font-medium rounded-[var(--radius)] bg-[var(--background)] text-[var(--muted-foreground)] border border-[var(--border)] cursor-default transition-colors hover:text-[var(--foreground)]"
                     >
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
 
                 {/* Direct Full-Width Highlighted Action Button */}
                 <div className="pt-2">
-                  <a
+                  <motion.a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-2.5 px-4 rounded-[var(--radius)] bg-[var(--primary)] text-[var(--primary-foreground)] font-bold text-xs inline-flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-xs"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-2.5 px-4 rounded-[var(--radius)] bg-[var(--primary)] text-[var(--primary-foreground)] font-bold text-xs inline-flex items-center justify-center gap-2 hover:opacity-90 transition-all shadow-xs group/btn cursor-pointer"
                   >
-                    Live Demo <FiExternalLink className="text-xs" />
-                  </a>
+                    Live Demo 
+                    <FiExternalLink className="text-xs group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                  </motion.a>
                 </div>
               </div>
             </motion.div>
